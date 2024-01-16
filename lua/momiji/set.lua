@@ -15,6 +15,9 @@ vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- Bar cursor
+vim.opt.guicursor = ""
+
 vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd("BufWritePre", {
