@@ -4,15 +4,11 @@ return {
     lazy = false,
     branch = 'v3.x',
     dependencies = {
-        {'williamboman/mason.nvim'},
-        {'williamboman/mason-lspconfig.nvim'},
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
 
         -- LSP Support
-        {'neovim/nvim-lspconfig'},
-        -- Autocompletion
-        {'hrsh7th/nvim-cmp'},
-        {'hrsh7th/cmp-nvim-lsp'},
-        {'L3MON4D3/LuaSnip'},
+        { 'neovim/nvim-lspconfig' },
     },
     config = function()
         local lsp = require("lsp-zero")
@@ -22,30 +18,14 @@ return {
         lsp.preset("recommended")
 
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                'tsserver',
-                'rust_analyzer',
-            },
-            handlers = {
-                lsp.default_setup,
-            }
+            ensure_installed = {},
         })
 
-        local cmp = require('cmp')
+        local lspconfig = require("lspconfig")
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-        local cmp_mappings = lsp.defaults.cmp_mappings({
-            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-            ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-            ["<C-Space>"] = cmp.mapping.complete(),
-        })
-
-        cmp_mappings['<Tab>'] = nil
-        cmp_mappings['<S-Tab>'] = nil
-
-        cmp.setup({
-            mapping = cmp_mappings
+        lspconfig.lua_ls.setup({})
+        lspconfig.emmet_language_server.setup({
+            filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" }
         })
 
         lsp.set_preferences({
@@ -75,8 +55,5 @@ return {
 
         lsp.setup()
 
-        vim.diagnostic.config({
-            virtual_text = true
-        })
     end
 }
