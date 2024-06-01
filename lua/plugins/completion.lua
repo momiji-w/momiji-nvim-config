@@ -13,7 +13,7 @@ return {
         'hrsh7th/nvim-cmp',
         config = function()
             local cmp = require('cmp')
-            -- require("luasnip.loaders.from_vscode").lazy_load()
+            require("luasnip.loaders.from_vscode").lazy_load()
 
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local cmp_mappings = require("lsp-zero").defaults.cmp_mappings({
