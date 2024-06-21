@@ -19,3 +19,5 @@ vim.opt.incsearch = true
 vim.opt.guicursor = ""
 
 vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 999
