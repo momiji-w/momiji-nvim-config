@@ -21,3 +21,5 @@ vim.opt.guicursor = ""
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 999
+
+vim.opt.cc = "80"
